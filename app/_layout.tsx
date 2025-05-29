@@ -9,6 +9,22 @@ export default function RootLayout() {
       <StatusBar hidden={false} />
       <Stack >
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="game/[gameTitle]"
+          options={{
+            headerShown: true,
+            headerStyle: {
+              backgroundColor: "#1A2B33",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              color: "#fff",
+              fontSize: 20,
+              fontWeight: "bold"
+            },
+            presentation: "card"
+          }}
+        />
       </Stack>
     </>)
 }
