@@ -1,6 +1,6 @@
 import { Tabs } from "expo-router";
-import { ImageBackground, Image, Text, View } from "react-native";
 import React from 'react';
+import { Image, ImageBackground, Text, View } from "react-native";
 
 import { IconSymbol } from '@/components/ui/IconSymbol';
 
@@ -54,7 +54,7 @@ export default function TabLayout() {
         options={{  
           title: "Home",
           headerShown: false,
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="home" color={color} />,
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
         }}
       />
       <Tabs.Screen
