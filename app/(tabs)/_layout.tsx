@@ -1,5 +1,5 @@
 import { Tabs } from "expo-router";
-import { ImageBackground, Image, Text, View } from "react-native";
+import { Home, LucideIcon, LucideSettings, Trophy } from "lucide-react-native";
 import React from 'react';
 import { Home, LucideIcon, LucideSettings, Trophy } from "lucide-react-native";
 import { IconSymbol } from '@/components/ui/IconSymbol';
