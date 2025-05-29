@@ -1,7 +1,7 @@
 import { Tabs } from "expo-router";
+import { Home, LucideIcon, LucideSettings, Trophy } from "lucide-react-native";
 import React from 'react';
-
-import { IconSymbol } from '@/components/ui/IconSymbol';
+import { Text, View } from "react-native";
 
 type TabIconProps = {
   icon: LucideIcon;
@@ -56,7 +56,14 @@ export default function TabLayout() {
         options={{
           title: "Home",
           headerShown: false,
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="home" color={color} />,
+          tabBarIcon: ({ color, focused }) => (
+            <TabIcon
+              icon={Home}
+              color={color}
+              name="Home"
+              focused={focused}
+            />
+          ),
         }}
       />
       <Tabs.Screen
