@@ -38,6 +38,9 @@ export default function TabLayout() {
         options={{
           title: 'Explore',
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          tabBarStyle: {
+            height: 'auto',
+          }
         }}
       />
     </Tabs>
