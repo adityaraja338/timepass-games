@@ -1,36 +1,39 @@
 import { Tabs } from "expo-router";
 import { ImageBackground, Image, Text, View } from "react-native";
 import React from 'react';
-
+import { Home, LucideIcon, LucideSettings, Trophy } from "lucide-react-native";
 import { IconSymbol } from '@/components/ui/IconSymbol';
 
-function TabIcon({ focused, icon, title }: any) {
-  if (focused) {
-    return (
-      <ImageBackground
-        // source={images.highlight}
-        className="flex flex-row w-full flex-1 min-w-[112px] min-h-16 mt-4 justify-center items-center rounded-full overflow-hidden"
-      >
-        <Image source={icon} tintColor="#151312" className="size-5" />
-        <Text className="text-secondary text-base font-semibold ml-2">
-          {title}
-        </Text>
-      </ImageBackground>
-    );
-  }
+type TabIconProps = {
+  icon: LucideIcon;
+  color: string;
+  name: string;
+  focused: boolean;
+};
 
+const TabIcon: React.FC<TabIconProps> = ({ icon: Icon, color, name, focused }) => {
   return (
-    <View className="size-full justify-center items-center mt-4 rounded-full">
-      <Image source={icon} tintColor="#A8B5DB" className="size-5" />
+    <View
+      className="min-w-[112px] min-h-[84px] flex-1 items-center justify-center gap-2 mt-8"
+      style={{ opacity: focused ? 1 : 0.5 }}
+    >
+      <Icon color={color} size={24} />
+      <Text
+        className={`${focused ? "font-bold" : "font-regular"} tracking-wider`}
+        style={{ color: color }}
+      >
+        {name}
+      </Text>
     </View>
   );
-}
-
+};
 export default function TabLayout() {
 
   return (
     <Tabs
       screenOptions={{
+        tabBarActiveTintColor: "#fff",
+        tabBarInactiveTintColor: "#91B8C9",
         tabBarShowLabel: false,
         tabBarItemStyle: {
           width: "100%",
@@ -39,22 +42,29 @@ export default function TabLayout() {
           alignItems: "center",
         },
         tabBarStyle: {
-          backgroundColor: "#0F0D23",
+          backgroundColor: "#1A2B33",
           // paddingVertical: 10,
           height: 80,
           position: "relative",
           overflow: "hidden",
-          // borderWidth: 2,
+          borderWidth: 0,
           // borderColor: "#fff",
         },
       }}
     >
       <Tabs.Screen
         name="index"
-        options={{  
+        options={{
           title: "Home",
           headerShown: false,
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="home" color={color} />,
+          tabBarIcon: ({ color, focused }) => (
+            <TabIcon
+              icon={Home}
+              color={color}
+              name="Home"
+              focused={focused}
+            />
+          ),
         }}
       />
       <Tabs.Screen
@@ -62,15 +72,30 @@ export default function TabLayout() {
         options={{
           title: 'Leaderboard',
           headerShown: false,
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          tabBarIcon: ({ color, focused }) => (
+            <TabIcon
+              icon={Trophy}
+              color={color}
+              name="Leaderboard"
+              focused={focused}
+            />
+          ),
         }}
+
       />
       <Tabs.Screen
         name="settings"
         options={{
           title: 'Settings',
           headerShown: false,
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          tabBarIcon: ({ color, focused }) => (
+            <TabIcon
+              icon={LucideSettings}
+              color={color}
+              name="Settings"
+              focused={focused}
+            />
+          ),
         }}
       />
     </Tabs>
